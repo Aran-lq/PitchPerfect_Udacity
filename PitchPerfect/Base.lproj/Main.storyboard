@@ -22,20 +22,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FRN-Cp-vGz">
-                                <rect key="frame" x="110.5" y="256" width="155" height="155"/>
+                                <rect key="frame" x="111" y="256" width="155" height="155"/>
                                 <state key="normal" image="Record"/>
                                 <connections>
                                     <action selector="recordAudio:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bVg-qr-XZg"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="press to record" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RDX-U8-HKj">
-                                <rect key="frame" x="129.5" y="429.5" width="116" height="21"/>
+                                <rect key="frame" x="130" y="419" width="116" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kpx-0g-Qtq">
-                                <rect key="frame" x="110" y="458" width="155" height="155"/>
+                                <rect key="frame" x="161" y="452.5" width="54" height="53"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="54" id="O5D-io-hHK"/>
+                                    <constraint firstAttribute="height" constant="53" id="xe1-Gk-0qM"/>
+                                </constraints>
                                 <state key="normal" image="Stop"/>
                                 <connections>
                                     <action selector="stopRecording:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5g3-oo-9oF"/>
@@ -44,12 +48,12 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Kpx-0g-Qtq" firstAttribute="centerX" secondItem="RDX-U8-HKj" secondAttribute="centerX" constant="0.5" id="EpW-C8-9x2"/>
-                            <constraint firstItem="RDX-U8-HKj" firstAttribute="centerX" secondItem="FRN-Cp-vGz" secondAttribute="centerX" id="MPX-oR-lYT"/>
-                            <constraint firstItem="Kpx-0g-Qtq" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" constant="-54" id="ewb-Lo-Mc5"/>
-                            <constraint firstItem="RDX-U8-HKj" firstAttribute="top" secondItem="FRN-Cp-vGz" secondAttribute="bottom" constant="18.5" id="gPi-YT-RXg"/>
-                            <constraint firstItem="FRN-Cp-vGz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jvh-iT-Gfq"/>
+                            <constraint firstItem="RDX-U8-HKj" firstAttribute="centerX" secondItem="FRN-Cp-vGz" secondAttribute="centerX" id="BCC-vL-Y81"/>
+                            <constraint firstItem="RDX-U8-HKj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ErI-4z-R8l"/>
+                            <constraint firstItem="RDX-U8-HKj" firstAttribute="top" secondItem="FRN-Cp-vGz" secondAttribute="bottom" constant="8" id="gPi-YT-RXg"/>
+                            <constraint firstItem="RDX-U8-HKj" firstAttribute="centerX" secondItem="Kpx-0g-Qtq" secondAttribute="centerX" id="hLA-qT-StI"/>
                             <constraint firstItem="FRN-Cp-vGz" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="pM5-px-elj"/>
+                            <constraint firstItem="Kpx-0g-Qtq" firstAttribute="top" secondItem="RDX-U8-HKj" secondAttribute="bottom" constant="12.5" id="tRU-Az-pLX"/>
                         </constraints>
                     </view>
                     <connections>

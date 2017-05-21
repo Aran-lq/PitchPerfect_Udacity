@@ -36,7 +36,7 @@ class ViewController: UIViewController {
 
     @IBAction func stopRecording(_ sender: Any) {
         print("be tough! I can't feel it !!!")
-        recordingLabel.text = "press to record"
+        recordingLabel.text = "Tap to record"
         stopRecordingButton.isEnabled = false
         recordButton.isEnabled = true
     }
