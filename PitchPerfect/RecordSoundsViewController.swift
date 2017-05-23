@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class RecordSoundsViewController: UIViewController {
+class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     
     var audioRecorder: AVAudioRecorder!  //give this ViewController the ability to use AVFoundation's function    -- lq
 
@@ -38,13 +38,13 @@ class RecordSoundsViewController: UIViewController {
         let pathArray = [dirPath, recordingName]
         let filePath = URL(string: pathArray.joined(separator: "/"))
         
-        print(filePath)
+//        print(filePath)
         
         let session = AVAudioSession.sharedInstance()
         try! session.setCategory(AVAudioSessionCategoryPlayAndRecord, with:AVAudioSessionCategoryOptions.defaultToSpeaker)
         
         try! audioRecorder = AVAudioRecorder(url: filePath!, settings: [:])
-//        audioRecorder.delegate = self       error when running   -- lq
+        audioRecorder.delegate = self       //set this viewcontroller as a delegate of AVAudioRecorder
         
         
         audioRecorder.isMeteringEnabled = true
@@ -60,6 +60,14 @@ class RecordSoundsViewController: UIViewController {
         audioRecorder.stop()
         let audioSession = AVAudioSession.sharedInstance
         try! audioSession().setActive(false)
+    }
+    
+    func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
+        if flag{
+            performSegue(withIdentifier: "stopRecording", sender: audioRecorder.url)
+        }else{
+            print("finished recording")
+        }
     }
 }
 
