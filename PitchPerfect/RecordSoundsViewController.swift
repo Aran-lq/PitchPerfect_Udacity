@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import AVFoundation
 
 class RecordSoundsViewController: UIViewController {
+    
+    var audioRecorder: AVAudioRecorder!  //give this ViewController the ability to use AVFoundation's function    -- lq
 
     @IBOutlet weak var recordingLabel: UILabel!
     @IBOutlet weak var recordButton: UIButton!
@@ -22,16 +25,31 @@ class RecordSoundsViewController: UIViewController {
         super.viewWillAppear(animated)
         print("please listen to me!")
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+
 
     @IBAction func recordAudio(_ sender: Any) {
         print("be tame! you hurt me!")
-        recordingLabel.text = "recording now"
+        recordingLabel.text = "recording in Progress"
         recordButton.isEnabled = false
         stopRecordingButton.isEnabled = true
+        
+        let dirPath = NSSearchPathForDirectoriesInDomains(.documentDirectory,.userDomainMask, true)[0] as String
+        let recordingName = "recordedVoice.wav"
+        let pathArray = [dirPath, recordingName]
+        let filePath = URL(string: pathArray.joined(separator: "/"))
+        
+        print(filePath)
+        
+        let session = AVAudioSession.sharedInstance()
+        try! session.setCategory(AVAudioSessionCategoryPlayAndRecord, with:AVAudioSessionCategoryOptions.defaultToSpeaker)
+        
+        try! audioRecorder = AVAudioRecorder(url: filePath!, settings: [:])
+//        audioRecorder.delegate = self       error when running   -- lq
+        
+        
+        audioRecorder.isMeteringEnabled = true
+        audioRecorder.prepareToRecord()
+        audioRecorder.record()
     }
 
     @IBAction func stopRecording(_ sender: Any) {
@@ -39,6 +57,9 @@ class RecordSoundsViewController: UIViewController {
         recordingLabel.text = "Tap to record"
         stopRecordingButton.isEnabled = false
         recordButton.isEnabled = true
+        audioRecorder.stop()
+        let audioSession = AVAudioSession.sharedInstance
+        try! audioSession().setActive(false)
     }
 }
 
